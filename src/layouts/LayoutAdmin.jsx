@@ -2,15 +2,17 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
 
+import MenuTop from "../components/Admin/MenuTop";
 import "./LayoutAdmin.scss";
 
 const LayoutAdmin = ({ routes }) => {
   const { Header, Content, Footer } = Layout;
   return (
     <Layout>
-      {/** TO DO Menu Top */}
       <Layout className="layout-admin">
-        <Header className="layout-admin__header">Header ...</Header>
+        <Header className="layout-admin__header">
+          <MenuTop />
+        </Header>
         <Content className="layout-admin__content">
           <LoadRouters routes={routes} />
         </Content>
