@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
 
@@ -8,12 +8,18 @@ import "./LayoutAdmin.scss";
 
 const LayoutAdmin = ({ routes }) => {
   const { Header, Content, Footer } = Layout;
+
+  //State to menu
+  const [collapse, setCollapse] = useState(false);
   return (
     <Layout>
-      <MenuSidebar />
-      <Layout className="layout-admin">
+      <MenuSidebar collapse={collapse} />
+      <Layout
+        className="layout-admin"
+        style={{ marginLeft: collapse ? "80px" : "200px" }}
+      >
         <Header className="layout-admin__header">
-          <MenuTop />
+          <MenuTop collapse={collapse} setCollapse={setCollapse} />
         </Header>
         <Content className="layout-admin__content">
           <LoadRouters routes={routes} />
