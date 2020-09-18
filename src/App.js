@@ -18,7 +18,6 @@ function App() {
 }
 
 function SetRoutesWithSubroutesFromAnArray(route) {
-  console.log("Cuantas veces ");
   return (
     <Route
       path={route.path}
