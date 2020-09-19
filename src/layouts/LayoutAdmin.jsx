@@ -1,16 +1,27 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 
+import AdminSignIn from "../components/Admin/SignIn";
 import MenuSidebar from "../components/Admin/MenuSidebar";
 import MenuTop from "../components/Admin/MenuTop";
 import "./LayoutAdmin.scss";
 
 const LayoutAdmin = ({ routes }) => {
   const { Header, Content, Footer } = Layout;
-
   //State to menu
   const [collapse, setCollapse] = useState(false);
+
+  const user = null;
+
+  if (!user) {
+    return (
+      <>
+        <Route path="/admin/login" component={AdminSignIn} />
+        <Redirect to="/admin/login" />
+      </>
+    );
+  }
   return (
     <Layout>
       <MenuSidebar collapse={collapse} />
